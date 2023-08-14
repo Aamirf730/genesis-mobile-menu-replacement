@@ -1,3 +1,4 @@
+
 Custom Mobile Menu for Genesis Theme
 
 A user-friendly and responsive mobile menu designed as a drop-in replacement for the default mobile menu in the Genesis theme for WordPress.
@@ -8,6 +9,7 @@ Features:
 Smooth slide-out animation.
 Sub-menu dropdowns with arrow indicators.
 Fully customizable through CSS.
+
 Installation:
 Install the wpcode Plugin:
 
@@ -17,10 +19,11 @@ Search for wpcode.
 Install and activate the wpcode plugin.
 Integrate the Custom Mobile Menu:
 
-From your WordPress dashboard, go to Appearance > WPCode.
+From your WordPress dashboard, go to WPCODE > Add Snippet
 Copy the code from our repository (ensure you copy everything, including the CSS, HTML, and JavaScript parts).
-Paste the code into the WPCode editor.
+Paste the code into the WP Code editor. Name it Mobile Menu. Select the code type as "PHP.
 Click Save.
+
 Test the Menu:
 
 Navigate to your website on a mobile device or use a mobile emulator in your web browser.
