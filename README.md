@@ -31,6 +31,8 @@ You should see the new custom mobile menu in action. Click on the hamburger icon
 Customization:
 You can easily customize the look and feel of the mobile menu by editing the CSS portion of the code. Adjust colors, fonts, or spacing as desired to match the aesthetics of your website.
 
+NOTE: THE CODE INCLUDES THE PLACEHOLDERS TO REPLACE WITH YOUR OWN. MAKE SURE TO CHECK AND REPLACE WITH YOUR BEFORE ADDING ON YOUR WEBSITE. PLACEHOLDERS ARE IN ALL CAPITAL LETTERS. 
+
 Contributing:
 If you find any bugs or would like to suggest improvements, please open an issue on our GitHub repository.
 
