@@ -1,5 +1,8 @@
 Custom Mobile Menu for Genesis Theme
+
 A user-friendly and responsive mobile menu designed as a drop-in replacement for the default mobile menu in the Genesis theme for WordPress.
+
+![LOGO](https://github.com/Aamirf730/genesis-mobile-menu-replacement/assets/81487407/c2cd74fe-2297-47df-86fe-03e205813716)
 
 Features:
 Smooth slide-out animation.
