@@ -1,0 +1,183 @@
+function maf_custom_mobile_header() {
+    if ( wp_is_mobile() ) {
+        // Hide the current header and menu
+        echo '<style>.site-header, .responsive-menu-icon, .genesis-nav-menu { display: none; }</style>';
+        
+        // Add your mobile header CSS
+        echo '<style>
+            /* Basic reset and body styling */
+            body, html {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            /* Header styling */
+            .mobile-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background-color: #fff;
+            }
+
+            /* Logo styling */
+            .logo {
+                width: 100px;
+                height: 70px;
+                display: inline-block;
+                margin-top: 5px; /* Adjusted for alignment */
+            }
+
+            /* Hamburger Icon */
+            .hamburger {
+                cursor: pointer;
+                width: 30px;
+                height: 22px;
+                position: relative;
+                display: inline-block;
+            }
+
+            .hamburger span {
+                width: 100%;
+                height: 4px;
+                background-color: #000;
+                position: absolute;
+                left: 0;
+                transition: 0.3s;
+            }
+
+            .hamburger span:nth-child(1) { top: 0; }
+            .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+            .hamburger span:nth-child(3) { bottom: 0; }
+
+            /* Slide-out menu styling (hidden by default) */
+            .slide-out-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;  
+                width: 300px;
+                max-height: 90vh;
+                overflow-y: scroll;
+                background-color: #fff;
+                transition: 0.3s;
+                z-index: 9999;
+            }
+
+            .slide-out-menu a {
+                display: block;
+                padding: 10px 20px;
+                color: #000;
+                text-decoration: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .slide-out-menu a:hover {
+                background-color: #eee;
+            }
+
+            /* Close button styling */
+            .menu-close {
+                display: block;
+                text-align: right;
+                padding: 10px;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            /* Submenu styling */
+            .submenu, .wheretogo-submenu {
+                display: none;
+                padding-left: 20px;
+            }
+
+            /* Arrow icon styling */
+            .arrow {
+                display: inline-block;
+                margin-left: 10px; /* Add space between text and arrow */
+                transition: 0.3s;
+            }
+        </style>';
+        
+        // Display the mobile header
+        echo '
+        <header class="mobile-header">
+            <img src="YOUR_LOGO_SRC_HERE" class="logo" alt="ALT_TXT" />
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+        <div class="slide-out-menu">
+            <div class="menu-close">&times;</div>
+            <a href="URL_SRC">HOME</a>
+            <a href="URL_SRC">ABOUT</a>
+            <a href="URL_SRC">CONTACT</a>
+            <a href="URL_SRC">SUBMENU_NAME<span class="arrow">&#x25BC;</span></a>
+            <div class="submenu">
+                <a href="URL_SRC">ITEM1</a>
+                <a href="URL_SRC">ITEM2</a>
+                <a href="URL_SRC">ITEM3</a>
+            </div>
+            <a href="https://mapandfamily.com/where-to-go/">SUBMENU_NAME_2 <span class="arrow">&#x25BC;</span></a>
+            <div class="submenu">
+                <a href="URL_SRC">ITEM1</a>
+                <a href="URL_SRC">ITEM2</a>
+                <a href="URL_SRC">ITEM3</a>
+                <a href="URL_SRC">ITEM4</a>
+                <a href="URL_SRC">ITEM5</a>
+                <a href="URL_SRC">ITEM6</a>
+                <a href="URL_SRC">ITEM7</a>
+            </div>
+            <a href="URL_SRC">PRIVACY POLICY</a>
+        </div>';
+
+        // Add your mobile header JavaScript
+        echo '<script>
+            // JavaScript for menu toggle
+            let hamburger = document.querySelector(".hamburger");
+            let menu = document.querySelector(".slide-out-menu");
+            let closeMenu = document.querySelector(".menu-close");
+            
+            // "WHAT TO DO" menu
+            let whatToDoMenu = document.querySelector(".slide-out-menu a[href=\'https://YOUR-DOMAIN.com/what-to-do/\']");
+            let whatToDoSubmenu = document.querySelector(".submenu");
+            let whatToDoArrowIcon = whatToDoMenu.querySelector(".arrow");
+
+            whatToDoMenu.addEventListener("click", function(event) {
+                event.preventDefault();
+                toggleSubmenu(whatToDoSubmenu, whatToDoArrowIcon);
+            });
+
+            // "WHERE TO GO" menu
+            let whereToGoMenu = document.querySelector(".slide-out-menu a[href=\'https://YOUR-DOMAIN.com/where-to-go/\']");
+            let whereToGoSubmenu = document.querySelectorAll(".submenu")[1]; // This selects the second .submenu, which is "WHERE TO GO"
+            let whereToGoArrowIcon = whereToGoMenu.querySelector(".arrow");
+
+            whereToGoMenu.addEventListener("click", function(event) {
+                event.preventDefault();
+                toggleSubmenu(whereToGoSubmenu, whereToGoArrowIcon);
+            });
+
+            function toggleSubmenu(submenu, arrowIcon) {
+                if (submenu.style.display === "none" || submenu.style.display === "") {
+                    submenu.style.display = "block";
+                    arrowIcon.innerHTML = "&#x25B2;";
+                } else {
+                    submenu.style.display = "none";
+                    arrowIcon.innerHTML = "&#x25BC;";
+                }
+            }
+
+            hamburger.addEventListener("click", function() {
+                menu.style.right = "0";
+            });
+
+            closeMenu.addEventListener("click", function() {
+                menu.style.right = "-100%";
+            });
+        </script>';
+    }
+}
+add_action( 'wp_head', 'maf_custom_mobile_header' );
